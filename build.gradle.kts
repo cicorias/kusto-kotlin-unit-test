@@ -1,9 +1,13 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.6.10"
+    kotlin("jvm")
     application
 }
+
+//from gradle.properties
+val kotlinJvmTarget: String by project
+val tbdCompilerArgs: String by project
 
 group = "me.scicoria"
 version = "1.0-SNAPSHOT"
@@ -21,7 +25,10 @@ tasks.test {
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "11"
+    kotlinOptions {
+        jvmTarget = kotlinJvmTarget
+        freeCompilerArgs = listOf(tbdCompilerArgs)
+    }
 }
 
 application {
