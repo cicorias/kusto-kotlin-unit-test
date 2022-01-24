@@ -6,6 +6,7 @@ plugins {
 }
 
 //from gradle.properties
+val azureKustoDataVersion: String by project
 val kotlinJvmTarget: String by project
 val tbdCompilerArgs: String by project
 
@@ -17,6 +18,7 @@ repositories {
 }
 
 dependencies {
+    implementation("com.microsoft.azure.kusto:kusto-data:${azureKustoDataVersion}")
     testImplementation(kotlin("test"))
 }
 
